@@ -20,7 +20,7 @@
 .pin .b{border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2.5px solid #fff;box-shadow:0 3px 8px rgba(0,0,0,.25);display:grid;place-items:center}
 .pin .b span{transform:rotate(45deg);color:#fff;font-weight:900;font-size:12px}
 .pin .n{margin-top:4px;font-size:12px;font-weight:700;background:rgba(255,255,255,.92);padding:2px 6px;border-radius:6px;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.1)}
-.pin.lv3 .b{width:44px;height:44px;background:#F5B400;box-shadow:0 0 0 8px rgba(245,180,0,.25),0 3px 8px rgba(0,0,0,.25)}.pin.lv2 .b{width:34px;height:34px;background:#FF6A00}.pin.lv1 .b{width:26px;height:26px;background:#FF9A55}
+.pin .bw{position:relative;display:grid;place-items:center}.pin.lv4 .b{width:44px;height:44px;background:#D62828}.pin.lv3 .b{width:38px;height:38px;background:#E8372C}.pin.lv2 .b{width:32px;height:32px;background:#FF7A1A}.pin.lv1 .b{width:26px;height:26px;background:#FFC21A}.pin.lv1 .b span{color:#4a3300}
 .pin.lv0{opacity:.55}.pin.lv0 .b{width:18px;height:18px;background:#9aa1ab}.pin.lv0 .n{display:none}
 .pin .md{position:absolute;top:-14px;left:60%;font-size:10px;background:#1d1f24;color:#fff;padding:2px 6px;border-radius:8px;white-space:nowrap;font-weight:700}
 .me{width:18px;height:18px;border-radius:50%;background:#3b82f6;border:3px solid #fff;box-shadow:0 0 0 10px rgba(59,130,246,.18)}
@@ -44,15 +44,37 @@
 .ad .dots{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);display:flex;gap:4px;z-index:2}.ad .dots i{width:5px;height:5px;border-radius:3px;background:rgba(255,255,255,.5);transition:.3s}.ad .dots i.on{width:14px;background:#fff}
 .mbox input.ti{width:100%;font:inherit;padding:10px;border:1.5px solid #eee;border-radius:12px;margin-top:8px}
 .loc.on{color:#3b82f6}.loc.wait{animation:lp 1s infinite}@keyframes lp{50%{opacity:.4}}
+.pin .ring{position:absolute;width:62px;height:62px;left:50%;top:50%;margin:-31px 0 0 -31px;border-radius:50%;background:conic-gradient(#FF6B6B,#FFC857,#00B8A9,#38BDF8,#a78bfa,#FF6B6B);animation:tb-spin 2.4s linear infinite,tb-glow 2.4s ease-in-out infinite;--g:rgba(255,140,66,.55);-webkit-mask:radial-gradient(circle,transparent 25px,#000 26px);mask:radial-gradient(circle,transparent 25px,#000 26px)}
+.pin .sp{position:absolute;color:#fff;font-size:11px;text-shadow:0 0 6px #FFC857,0 0 2px #FF6B6B;animation:tb-twinkle 1.2s ease-in-out infinite;pointer-events:none;z-index:3}
+@keyframes tb-spin{to{transform:rotate(360deg)}}@keyframes tb-glow{0%,100%{box-shadow:0 0 10px 2px var(--g)}50%{box-shadow:0 0 22px 7px var(--g)}}@keyframes tb-twinkle{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:1;transform:scale(1) rotate(90deg)}}
+@media (prefers-reduced-motion:reduce){.pin .ring,.pin .sp{animation:none}}
+.pin.lv4 .n{background:linear-gradient(90deg,#fff1e0,#ffe0e0);font-weight:900}.tag.r{background:#E8372C;color:#fff}.tag.lg{background:linear-gradient(90deg,#FF6B6B,#FFC857,#38BDF8,#a78bfa);color:#fff;font-weight:800}
+.legend{position:absolute;left:12px;bottom:194px;z-index:10;background:rgba(255,255,255,.95);border-radius:12px;padding:6px 10px;box-shadow:0 2px 10px rgba(0,0,0,.12);font-size:11px;display:flex;gap:8px;align-items:center}.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:3px;vertical-align:-1px}.legend .rg{background:conic-gradient(#FF6B6B,#FFC857,#00B8A9,#38BDF8,#a78bfa,#FF6B6B)}
+/* 버튼 시안 A */
+.act{cursor:pointer;user-select:none;transition:transform .15s,box-shadow .15s,background .15s}.act:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.12)}.btn.act:hover{box-shadow:0 6px 16px rgba(255,122,26,.45);filter:brightness(1.05)}.act:active{transform:scale(.94)}
+.act.pop{animation:pop .42s cubic-bezier(.3,1.6,.5,1)}@keyframes pop{0%{transform:scale(1)}30%{transform:scale(.94)}65%{transform:scale(1.08)}100%{transform:scale(1)}}
+.btn2.vis-on{background:#E6F7EE;color:#0a7a42;font-weight:700}.btn2.done{background:#eceef1;color:#7a808a}.btn2.rep:hover:not(.done){background:#ffe9e5;color:#c0392b}.btn2.ed:hover:not(.done){background:#e7f0ff;color:#1c5fd4}
+/* 사진 목록 시안 B */
+.pl{position:fixed;inset:0;z-index:55;background:#fff;display:none;flex-direction:column}.pl.on{display:flex}@media(min-width:760px){.pl{inset:5vh auto 5vh 50%;width:560px;margin-left:-280px;border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.35)}.plbg.on{display:block}}
+.plbg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:54;display:none}.pl .ph{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid #f0f1f3}.pl .ph span{font-size:22px;cursor:pointer}
+.pl .ptabs{display:flex;gap:6px;padding:10px 12px;overflow-x:auto;scrollbar-width:none}.pl .pg{overflow:auto;padding:0 4px 20px;flex:1}.pl .pg h5{padding:12px 10px 6px;font-size:13px}.pl .gr{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}.pl .gr div{aspect-ratio:1;background:center/cover;border-radius:4px;cursor:zoom-in}
+.chip.more{background:#1d1f24;color:#fff;font-weight:800}
+/* PC 광고: 왼쪽 목록 패널 하단 고정 (시안 PC-C) */
+.pcad{display:none}
+@media(min-width:760px){.bs,.bs.open,.bs.detail{left:12px!important;margin-left:0!important;width:380px!important;top:var(--topH,132px);bottom:12px;height:auto!important;max-height:none;border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,.18)}.bs .handle{display:none}.bs .in{padding-top:14px}
+ .pcad{display:block;flex:none;margin:0 12px 12px;position:relative;height:96px;border-radius:12px;overflow:hidden}.legend{left:404px;bottom:16px}}
 </style></head><body>
 <div id="map"></div>
 <div class="top"><div class="srch" style="position:relative"><img src="logo_header.svg" alt="맛있을지도?" style="height:44px;flex:none;margin:-6px 0">🔍<div class="sbox" style="flex:1;min-width:0"><input id="q" placeholder="식당·메뉴·지역 검색" autocomplete="off" style="width:100%"><div class="dd" id="dd"></div></div><a href="profile.html" title="내 프로필" style="flex:none;width:36px;height:36px;border-radius:50%;padding:2px;background:conic-gradient(#FFB800,#FF7A1A,#FFB800)"><span style="display:block;width:100%;height:100%;border-radius:50%;border:2px solid #fff;background:url(img/p0_gukbap.jpg) center/cover"></span></a><button class="regb" id="regB" title="맛집 등록">＋ 등록</button></div><div class="ad" id="ad"></div><div class="chips" id="chips"></div></div>
 <div class="loc" id="loc" title="현재 위치">◎</div>
-<div class="bs" id="bs"><div class="handle" id="hd"><i></i></div><div class="in" id="in"></div></div>
+<div class="bs" id="bs"><div class="handle" id="hd"><i></i></div><div class="in" id="in"></div><div class="pcad ad" id="pcad"></div></div>
 <div class="modal" id="mRep"><div class="mbox"><h4>🚨 신고하기</h4><div class="sub" id="repName"></div><div class="rs" id="repR"></div><div class="sub">신고자 정보는 공개되지 않아요. 신고만으로 점수가 깎이지 않고, 검토 후 반영돼요.</div><div class="btns"><div class="btn2" onclick="closeM()">취소</div><div class="btn" onclick="submitRep()">신고 접수</div></div></div></div>
 <div class="modal" id="mEdit"><div class="mbox"><h4>✏️ 정보 수정 제안</h4><div class="sub" id="edName"></div><select id="edF"><option>가게 이름</option><option>위치(주소)</option><option>영업시간</option><option>대표 메뉴</option><option>카테고리</option></select><textarea id="edT" placeholder="올바른 정보를 알려주세요"></textarea><div class="btns"><div class="btn2" onclick="closeM()">취소</div><div class="btn" onclick="submitEdit()">제안 보내기</div></div></div></div>
 <div class="lb" id="lb"><span class="x" onclick="lbClose()">✕</span><span class="pv" onclick="lbGo(-1)">‹</span><img id="lbImg" alt=""><span class="nx" onclick="lbGo(1)">›</span><div class="cnt" id="lbCnt"></div></div>
 <div class="modal" id="mReg"><div class="mbox"><h4>🍽️ 맛집 등록</h4><div class="sub">내가 직접 가 본 곳만 등록할 수 있어요. 위치는 지금 지도 가운데로 잡혀요.</div><input class="ti" id="rgN" placeholder="가게 이름"><select id="rgC"><option>한식</option><option>중식</option><option>일식</option><option>양식</option><option>분식</option><option>카페</option></select><div class="rs" id="rgM"></div><div class="btns"><div class="btn2" onclick="closeM()">취소</div><div class="btn" onclick="submitReg()">등록하기</div></div></div></div>
+<div class="legend" id="lgd"><b>${0}</b></div>
+<div class="plbg" id="plbg" onclick="plClose()"></div><div class="pl" id="pl"><div class="ph"><span onclick="plClose()">‹</span><b id="plT" style="flex:1"></b><span onclick="plClose()" style="font-size:16px">✕</span></div><div class="ptabs" id="plTabs"></div><div class="pg" id="plG"></div></div>
+<div class="modal" id="mConf"><div class="mbox"><h4 id="cfT"></h4><div class="sub" id="cfS"></div><div class="btns"><div class="btn2 act" onclick="closeM()">아니요</div><div class="btn act" id="cfY">네, 취소할게요</div></div></div></div>
 <div id="err"></div>
 <script src="data.js"></script>
 <script>
@@ -60,9 +82,9 @@ let map,clu,ovs=[],meOv;const FIL=['전체','한식','중식','일식','양식',
 function dist(a,b){const R=6371e3,r=Math.PI/180,dl=(b.lat-a.lat)*r,dn=(b.lng-a.lng)*r;const x=Math.sin(dl/2)**2+Math.cos(a.lat*r)*Math.cos(b.lat*r)*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(x))}
 const fd=m=>m<1000?Math.round(m)+'m':(m/1000).toFixed(1)+'km';
 const vis=()=>P.filter(p=>fil=='전체'||p.c==fil||p.t.includes(fil)||(fil=='내돈내산'&&p.m)).map(p=>({...p,d:dist(me,p)})).sort((a,b)=>a.d-b.d);
-const tag=p=>{const l=lvOf(p);return l==3?`<span class="tag g">🏅 ${LABEL.realPin}</span>`:l==2?'<span class="tag h">🔥 인기</span>':l==1?'<span class="tag">추천</span>':'<span class="tag">새 등록</span>'};
+const tag=p=>{const l=lvOf(p);return l==4?'<span class="tag lg">👑 레전드</span>':l==3?`<span class="tag r">🏅 ${LABEL.realPin}</span>`:l==2?'<span class="tag h">🔥 인기</span>':l==1?'<span class="tag">추천</span>':'<span class="tag">새 등록</span>'};
 const bs=document.getElementById('bs'),inn=document.getElementById('in'),loc=document.getElementById('loc');
-function setBs(cls){bs.className='bs '+(cls||'');loc.style.display=(cls&&innerWidth<760)?'none':'';loc.style.bottom=(cls=='open'?'calc(70% + 14px)':cls=='detail'?'min(574px,calc(85% + 14px))':'194px')}
+function setBs(cls){bs.className='bs '+(cls||'');loc.style.display=(cls&&innerWidth<760)?'none':'';const lg=document.getElementById('lgd');if(lg)lg.style.display=(cls&&innerWidth<760)?'none':'';loc.style.bottom=(cls=='open'?'calc(70% + 14px)':cls=='detail'?'min(574px,calc(85% + 14px))':'194px')}
 const SORTS=[['near','📍 가까운 순'],['k',`👍 ${LABEL.overlap} 많은 순`],['new','🆕 최신 등록 순'],['vis','✅ 방문 인증 많은 순']];let srt=DB.get('sort','near');
 function base(){if(!map)return {lat:me.lat,lng:me.lng,inb:()=>true};const c=map.getCenter(),b=map.getBounds();return {lat:c.getLat(),lng:c.getLng(),inb:p=>b.contain(new kakao.maps.LatLng(p.lat,p.lng))}}
 function inView(){const B=base();let v=vis().filter(B.inb).map(p=>({...p,d:dist(B,p)}));const f={near:(a,b)=>a.d-b.d,k:(a,b)=>kOf(b)-kOf(a)||a.d-b.d,new:(a,b)=>b.at-a.at,vis:(a,b)=>vOf(b)-vOf(a)||a.d-b.d}[srt];return v.sort(f)}
@@ -72,29 +94,34 @@ function setSort(k){srt=k;DB.set('sort',k);list()}
 function list(){cur=null;const v=inView(),T=SORTS.find(s=>s[0]==srt)[1];const extra=p=>srt=='new'?' · '+ago(p.at)+' 등록':srt=='vis'?' · 방문 인증 '+vOf(p):'';inn.innerHTML=`<b style="font-size:16px">${map?'🗺️ 지금 지도 안':'📍 내 주변'} · ${T.replace(/^\S+ /,'')}</b> <span class="sub">${fil=='전체'?'':fil+' · '}${v.length}곳</span><div class="stabs">${SORTS.map(s=>`<button class="stab ${s[0]==srt?'on':''}" onclick="setSort('${s[0]}')">${s[1]}</button>`).join('')}</div>`+(v.length?v.map((p,i)=>`<div class="row" onclick="detail(${p.id})"><span class="rk ${lvOf(p)==3?'g':lvOf(p)==2?'h':''}">${i+1}</span><div class="th" style="background-image:url(img/${p.img}.jpg)"></div><div class="f"><b>${p.n}</b> ${p.m?'<span class="mm">내돈내산</span>':''}<div class="sub">${p.c} · ${fd(p.d)} · ${LABEL.overlap} ${kOf(p)}명${extra(p)}</div></div>${tag(p)}</div>`).join(''):'<p class="sub" style="padding:20px 0;text-align:center">지금 지도 화면 안에 맛집이 없어요.<br>지도를 옮기거나 축소해 보세요</p>')}
 const gal=p=>[p.img,...IMG.filter(x=>x!=p.img).slice(0,3)];
 function detail(id,noPan){const p=P[id];cur=id;setBs('detail');const g=gal(p),liked=likes().includes(id),visited=DB.get('visits',[]).includes(id);
- inn.innerHTML=`<div class="hero" onclick="lbOpen(${id},0)" style="background-image:url(img/${p.img}.jpg)"></div><div class="gal">${g.slice(1).map((x,i)=>`<div onclick="lbOpen(${id},${i+1})" style="background-image:url(img/${x}.jpg)"></div>`).join('')}<span class="sub" style="align-self:center;cursor:pointer" onclick="lbOpen(${id},0)">사진 ${kOf(p)*2+3}장 보기 ›</span></div>
+ inn.innerHTML=`<div class="hero" onclick="lbOpen(${id},0)" style="background-image:url(img/${p.img}.jpg)"></div><div class="gal">${g.slice(1).map((x,i)=>`<div onclick="lbOpen(${id},${i+1})" style="background-image:url(img/${x}.jpg)"></div>`).join('')}<span class="sub" style="align-self:center;cursor:pointer" onclick="plOpen(${id})">사진 ${pics(p).length}장 보기 ›</span></div>
  <div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:19px">${p.n}</b>${tag(p)}</div><div class="sub" style="margin:4px 0 8px">${p.c} · ${p.menu.join(', ')} · ${fd(dist(me,p))} · ${LABEL.overlap} ${kOf(p)}명</div>
  <div style="display:flex;gap:6px;flex-wrap:wrap">${p.m?'<span class="mm" style="padding:5px 8px">🧾 내돈내산 '+Math.ceil(p.k0/2)+'</span>':''}<span class="tag">📍 GPS 인증 ${Math.floor(p.k0/3)+(visited?1:0)}</span>${p.t.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
  <p class="sub" style="margin-top:10px">"또 오고 싶은 집이에요" — Lv.7 동네 미식가 외 ${Math.max(0,kOf(p)-1)}명</p>
- <div class="btns"><div class="btn ${liked?'liked':''}" id="likeBtn" onclick="like(${id})">${liked?'✅ 추천함':'👍 나도 추천'} · ${kOf(p)}</div><div class="btn2" onclick="visit(${id})">${visited?'✅ 방문함':'📍 방문 인증'}</div></div>
- <div class="btns" style="margin-top:8px"><div class="btn2" style="flex:1;text-align:center" onclick="openRep(${id})">🚨 신고</div><div class="btn2" style="flex:1;text-align:center" onclick="openEdit(${id})">✏️ 수정 제안</div></div><p class="sub" style="margin-top:12px;cursor:pointer" onclick="setBs('open');list()">← 목록으로</p>`;
- if(map&&!noPan){map.setCenter(new kakao.maps.LatLng(p.lat,p.lng));setTimeout(()=>map.panBy(0,Math.round(bs.offsetHeight/2)-80),350)}}
-function like(id){const l=likes();if(l.includes(id)){toast('이미 추천한 맛집이에요 (1인 1회)');return}l.push(id);DB.set('likes',l);toast('추천했어요! +10 XP');detail(id,1);draw()}
-function visit(id){const v=DB.get('visits',[]);if(v.includes(id)){toast('이미 방문 인증한 곳이에요');return}
+ <div class="btns"><div class="btn act ${liked?'liked':''}" id="likeBtn" onclick="like(${id})">${liked?'✅ 추천함':'👍 나도 추천'} · ${kOf(p)}</div><div class="btn2 act ${visited?'vis-on':''}" id="visBtn" onclick="visit(${id})">${visited?'✅ 방문함':'📍 방문 인증'}</div></div>
+ <div class="btns" style="margin-top:8px"><div class="btn2 act rep ${repd(id)?'done':''}" id="repBtn" style="flex:1;text-align:center" onclick="openRep(${id})">${repd(id)?'✓ 신고 접수됨':'🚨 신고'}</div><div class="btn2 act ed ${edd(id)?'done':''}" id="edBtn" style="flex:1;text-align:center" onclick="openEdit(${id})">${edd(id)?'✓ 제안 접수됨':'✏️ 수정 제안'}</div></div><p class="sub" style="margin-top:12px;cursor:pointer" onclick="setBs('open');list()">← 목록으로</p>`;
+ if(map&&!noPan){map.setCenter(new kakao.maps.LatLng(p.lat,p.lng));setTimeout(()=>innerWidth>=760?map.panBy(-200,0):map.panBy(0,Math.round(bs.offsetHeight/2)-80),350)}}
+function fx(bid){const b=document.getElementById(bid);if(!b)return;b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');try{navigator.vibrate&&navigator.vibrate(bid=='likeBtn'||bid=='visBtn'?[12,30,18]:15)}catch(e){}}
+function like(id){const l=likes();if(l.includes(id)){l.splice(l.indexOf(id),1);DB.set('likes',l);toast('추천을 취소했어요');detail(id,1);draw();fx('likeBtn');return}l.push(id);DB.set('likes',l);toast('추천했어요! +10 XP');detail(id,1);draw();fx('likeBtn')}
+function visit(id){const v=DB.get('visits',[]);if(v.includes(id)){v.splice(v.indexOf(id),1);DB.set('visits',v);toast('방문 인증을 취소했어요');detail(id,1);fx('visBtn');return}
  const p=P[id],d=dist(me,p);if(d>300){toast(`식당과 ${fd(d)} 떨어져 있어요. 반경 300m 안에서 인증할 수 있어요 (프로토타입이라 인증 처리)`)}else toast('📍 방문 인증 완료! 스티커를 받았어요');
- v.push(id);DB.set('visits',v);const m=MISSIONS[0];if(m.calc()>=m.goal&&!DB.get('m_top10_done'))setTimeout(()=>{toast('🎉 미션 달성: '+m.t);DB.set('m_top10_done',1)},2300);detail(id,1)}
+ v.push(id);DB.set('visits',v);const m=MISSIONS[0];if(m.calc()>=m.goal&&!DB.get('m_top10_done'))setTimeout(()=>{toast('🎉 미션 달성: '+m.t);DB.set('m_top10_done',1)},2300);detail(id,1);fx('visBtn')}
+const repd=id=>(DB.get('reports',{})[id]||[]).length>0,edd=id=>DB.get('edits',[]).some(e=>e.id==id);
+function confirmX(t,sub,yes){document.getElementById('cfT').textContent=t;document.getElementById('cfS').textContent=sub;document.getElementById('cfY').onclick=()=>{closeM();yes()};document.getElementById('mConf').classList.add('on')}
 const REASONS=['잘못된 위치','폐업 또는 영업 종료','허위 정보','부적절한 콘텐츠','광고·홍보성 등록'];let mid=null;
-function openRep(id){mid=id;const done=DB.get('reports',{})[id]||[];document.getElementById('repName').textContent=P[id].n+' · 같은 사유로는 한 번만 신고할 수 있어요';
+function openRep(id){if(repd(id)){fx('repBtn');confirmX('신고 접수를 취소할까요?',P[id].n+' · 검토가 끝나기 전이라 취소할 수 있어요',()=>{const R=DB.get('reports',{});delete R[id];DB.set('reports',R);toast('신고를 취소했어요');detail(id,1);fx('repBtn')});return}mid=id;const done=DB.get('reports',{})[id]||[];document.getElementById('repName').textContent=P[id].n+' · 같은 사유로는 한 번만 신고할 수 있어요';
  document.getElementById('repR').innerHTML=REASONS.map(r=>`<label class="${done.includes(r)?'dis':''}"><input type="radio" name="rr" value="${r}" ${done.includes(r)?'disabled':''}><span>${r}${done.includes(r)?' (신고함)':''}</span></label>`).join('');document.getElementById('mRep').classList.add('on')}
-function submitRep(){const c=document.querySelector('#repR input:checked');if(!c){toast('신고 사유를 선택해 주세요');return}const R=DB.get('reports',{});(R[mid]=R[mid]||[]).push(c.value);DB.set('reports',R);closeM();toast('신고가 접수됐어요. 검토 후 처리돼요')}
-function openEdit(id){mid=id;document.getElementById('edName').textContent=P[id].n;document.getElementById('edT').value='';document.getElementById('mEdit').classList.add('on')}
-function submitEdit(){const t=document.getElementById('edT').value.trim();if(t.length<2){toast('수정할 내용을 적어 주세요');return}const E=DB.get('edits',[]);E.push({id:mid,f:document.getElementById('edF').value,t,at:Date.now()});DB.set('edits',E);closeM();toast('수정 제안을 보냈어요. 고마워요!')}
+function submitRep(){const c=document.querySelector('#repR input:checked');if(!c){toast('신고 사유를 선택해 주세요');return}const R=DB.get('reports',{});(R[mid]=R[mid]||[]).push(c.value);DB.set('reports',R);closeM();toast('신고가 접수됐어요. 검토 후 처리돼요');detail(mid,1);fx('repBtn')}
+function openEdit(id){if(edd(id)){fx('edBtn');confirmX('수정 제안을 취소할까요?',P[id].n+' · 보낸 제안을 거둬들여요',()=>{DB.set('edits',DB.get('edits',[]).filter(e=>e.id!=id));toast('수정 제안을 취소했어요');detail(id,1);fx('edBtn')});return}mid=id;document.getElementById('edName').textContent=P[id].n;document.getElementById('edT').value='';document.getElementById('mEdit').classList.add('on')}
+function submitEdit(){const t=document.getElementById('edT').value.trim();if(t.length<2){toast('수정할 내용을 적어 주세요');return}const E=DB.get('edits',[]);E.push({id:mid,f:document.getElementById('edF').value,t,at:Date.now()});DB.set('edits',E);closeM();toast('수정 제안을 보냈어요. 고마워요!');detail(mid,1);fx('edBtn')}
 function closeM(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('on'))}document.querySelectorAll('.modal').forEach(m=>m.onclick=e=>{if(e.target==m)closeM()});
 let lbs=[],lbi=0;function lbOpen(id,i){lbs=gal(P[id]);lbi=i;lbShow();document.getElementById('lb').classList.add('on')}function lbShow(){document.getElementById('lbImg').src='img/'+lbs[lbi]+'.jpg';document.getElementById('lbCnt').textContent=(lbi+1)+' / '+lbs.length}
 function lbGo(d){lbi=(lbi+d+lbs.length)%lbs.length;lbShow()}function lbClose(){document.getElementById('lb').classList.remove('on')}
-document.addEventListener('keydown',e=>{if(e.key=='Escape'){lbClose();closeM();dd.classList.remove('on')}if(document.getElementById('lb').classList.contains('on')){if(e.key=='ArrowLeft')lbGo(-1);if(e.key=='ArrowRight')lbGo(1)}});
-document.getElementById('chips').innerHTML=FIL.map(f=>`<button class="chip ${f==fil?'on':''}">${f}</button>`).join('');
-document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{fil=b.textContent;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x==b));setBs('open');list();draw()});
+document.addEventListener('keydown',e=>{if(e.key=='Escape'){if(document.getElementById('lb').classList.contains('on'))lbClose();else plClose();closeM();dd.classList.remove('on')}if(document.getElementById('lb').classList.contains('on')){if(e.key=='ArrowLeft')lbGo(-1);if(e.key=='ArrowRight')lbGo(1)}});
+let chipMore=false;function chipsR(){const show=chipMore?FIL:FIL.slice(0,7).concat(FIL.indexOf(fil)>6?[fil]:[]);
+ document.getElementById('chips').innerHTML=show.map(f=>`<button class="chip ${f==fil?'on':''}" data-f="${f}">${f}</button>`).join('')+`<button class="chip more" id="chMore" title="${chipMore?'접기':'카테고리 더 보기'}">${chipMore?'－':'＋'}</button>`;
+ document.querySelectorAll('.chip[data-f]').forEach(b=>b.onclick=()=>{fil=b.dataset.f;chipsR();setBs('open');list();draw()});document.getElementById('chMore').onclick=()=>{chipMore=!chipMore;chipsR()}}
+chipsR();
 document.getElementById('hd').onclick=()=>{if(bs.classList.contains('detail')){setBs('open');list()}else setBs(bs.classList.contains('open')?'':'open')};
 list();setBs('');
 // ===== 검색 (맛집·메뉴·지역) =====
@@ -120,7 +147,7 @@ q.oninput=search;q.onfocus=search;q.onblur=()=>setTimeout(()=>dd.classList.remov
 q.onkeydown=e=>{const n=dd.querySelectorAll('.o');if(e.key=='ArrowDown'||e.key=='ArrowUp'){e.preventDefault();sel=(sel+(e.key=='ArrowDown'?1:-1)+n.length)%n.length;n.forEach((x,j)=>x.classList.toggle('sel',j==sel))}
  if(e.key=='Enter'){e.preventDefault();if(opts.length)pick(sel>=0?sel:0);else toast('검색 결과가 없어요')}};
 function draw(){if(!map)return;clu.clear();ovs.forEach(o=>o.setMap(null));ovs=[];const v=vis(),mk=[];
- v.forEach(p=>{const el=document.createElement('div');const l=lvOf(p);el.className='pin lv'+l;el.innerHTML=`${p.m&&l>0?'<span class="md">내돈내산</span>':''}<div class="b"><span>${l>0?kOf(p):''}</span></div><div class="n">${p.n}</div>`;el.onclick=()=>detail(p.id);
+ v.forEach(p=>{const el=document.createElement('div');const l=lvOf(p);el.className='pin lv'+l;el.innerHTML=`${p.m&&l>0?'<span class="md">내돈내산</span>':''}<div class="bw">${l==4?'<span class="ring"></span><i class="sp" style="left:-6px;top:-4px">✦</i><i class="sp" style="right:-8px;top:6px;animation-delay:.4s">✦</i><i class="sp" style="left:2px;bottom:-6px;animation-delay:.8s">✦</i>':''}<div class="b"><span>${l>0?kOf(p):''}</span></div></div><div class="n">${p.n}</div>`;el.onclick=()=>detail(p.id);
   const pos=new kakao.maps.LatLng(p.lat,p.lng);ovs.push(new kakao.maps.CustomOverlay({position:pos,content:el,yAnchor:0,zIndex:10+l}));mk.push(new kakao.maps.Marker({position:pos,opacity:0}))});
  const far=map.getLevel()>=6;document.getElementById('map').classList.toggle('mid',map.getLevel()>=5);ovs.forEach(o=>o.setMap(far?null:map));if(meOv)meOv.setMap(far?null:map);if(far)clu.addMarkers(mk)}
 function initMap(){kakao.maps.load(()=>{map=new kakao.maps.Map(document.getElementById('map'),{center:new kakao.maps.LatLng(C0.lat,C0.lng),level:5});
@@ -139,7 +166,7 @@ function geoErr(e){loc.classList.remove('wait');
 function onPos(pos,first){const c=pos.coords;if(gotFix&&lastAcc!=null&&c.accuracy>lastAcc*1.5&&c.accuracy>50)return; // 더 부정확한 값은 무시
  lastAcc=c.accuracy;me={lat:c.latitude,lng:c.longitude};window.__acc=c.accuracy;loc.classList.remove('wait');loc.classList.add('on');
  if(map){const ll=new kakao.maps.LatLng(me.lat,me.lng);meOv.setPosition(ll);meOv.setMap(map.getLevel()>=6?null:map);
-  if(!accC)accC=new kakao.maps.Circle({map,center:ll,radius:c.accuracy,strokeWeight:1,strokeColor:'#3b82f6',strokeOpacity:.6,fillColor:'#3b82f6',fillOpacity:.12});else{accC.setPosition(ll);accC.setRadius(c.accuracy)}
+  
   if(!gotFix){gotFix=true;map.panTo(ll);toast(c.accuracy>200?`대략적인 위치예요 (오차 약 ${Math.round(c.accuracy)}m). GPS를 켜면 더 정확해져요`:`내 위치로 이동했어요 (오차 약 ${Math.round(c.accuracy)}m)`)}}
  else gotFix=true;
  if(cur==null&&!map)list()}
@@ -168,13 +195,27 @@ function submitReg(){const n=document.getElementById('rgN').value.trim(),m=docum
  const q={n,c:cat,img:IMG[im],menu:MENU[im],k0:1,m:m.value=='receipt'?1:0,t:m.value=='receipt'?['내돈내산']:[],...pos,rg:'내 등록',v0:0,at:Date.now()};
  const L=DB.get('myplaces',[]);L.push(q);DB.set('myplaces',L);P.push({...q,id:P.length});const U=DB.get('regcnt',{}),t=U[today()]=U[today()]||{};t[m.value]=(t[m.value]||0)+1;DB.set('regcnt',U);
  closeM();toast(`'${n}' 등록 완료! +${m.value=='receipt'?100:m.value=='gps'?75:50} XP`);draw();detail(P.length-1,1)}
+// ===== 사진 목록 (시안 5-B: 분류 탭 + 그리드) =====
+const PCAT=['음식','메뉴판','내부','외관'];
+function pics(p){const g=gal(p),n=6+(p.k0%7),o=[];for(let k=0;k<n;k++){const c=k<n-4?'음식':k<n-2?'메뉴판':k<n-1?'내부':'외관';o.push({img:c=='음식'?g[k%g.length]:IMG[(p.id+k)%IMG.length],c})}return o}
+let plP=null,plTab='전체';function plOpen(id){plP=P[id];plTab='전체';plR();document.getElementById('pl').classList.add('on');document.getElementById('plbg').classList.add('on')}
+function plClose(){document.getElementById('pl').classList.remove('on');document.getElementById('plbg').classList.remove('on')}
+function plR(){const ps=pics(plP);document.getElementById('plT').textContent=plP.n+' · 사진 '+ps.length+'장';
+ document.getElementById('plTabs').innerHTML=['전체',...PCAT].map(t=>`<button class="chip ${t==plTab?'on':''}" onclick="plTab='${t}';plR()">${t} ${t=='전체'?ps.length:ps.filter(x=>x.c==t).length}</button>`).join('');
+ const sec=t=>{const L=ps.map((x,i)=>({...x,i})).filter(x=>x.c==t);return L.length?`<h5>${t}</h5><div class="gr">${L.map(x=>`<div style="background-image:url(img/${x.img}.jpg)" onclick="plView(${x.i})"></div>`).join('')}</div>`:''};
+ document.getElementById('plG').innerHTML=plTab=='전체'?PCAT.map(sec).join(''):sec(plTab)||'<p class="sub" style="padding:30px;text-align:center">아직 사진이 없어요</p>'}
+function plView(i){lbs=pics(plP).map(x=>x.img);lbi=i;lbShow();document.getElementById('lb').classList.add('on')}
+document.getElementById('lgd').innerHTML=`<b>${LABEL.overlap} 수</b><span><i style="background:#FFC21A"></i>1~9</span><span><i style="background:#FF7A1A"></i>10~29</span><span><i style="background:#E8372C"></i>30~99</span><span><i class="rg"></i>100+ 👑</span>`;
+function topH(){document.documentElement.style.setProperty('--topH',(document.querySelector('.top').offsetHeight+22)+'px')}addEventListener('resize',topH);topH();
 // ===== 광고 슬라이드 (모바일 전용, 가상 예시 브랜드) =====
 const ADS=[['🍳','linear-gradient(110deg,#FF7A1A,#FFB800)','노른자 프라이팬','맛집 사장님들이 쓰는 그 팬 · 20% 할인'],['💳','linear-gradient(110deg,#3b5bdb,#5c7cfa)','맛나카드','맛집 결제 시 10% 캐시백'],['🛵','linear-gradient(110deg,#0ca678,#38d9a9)','동네배달 한그릇','첫 주문 3,000원 할인 쿠폰'],['🍶','linear-gradient(110deg,#862e9c,#cc5de8)','진해 벚꽃 막걸리','이번 주 한정 시음 이벤트']];
 (function(){const ad=document.getElementById('ad');if(DB.get('adClosed')==today())return;let k=0;
  ad.innerHTML='<span class="lab">광고</span><span class="cx" title="오늘 닫기">✕</span>'+ADS.map((a,i)=>`<div class="sl ${i?'':'on'}" style="background:${a[1]}" onclick="toast('광고 예시예요 (가상 브랜드)')"><span class="em">${a[0]}</span><div><b>${a[2]}</b><small>${a[3]}</small></div></div>`).join('')+`<div class="dots">${ADS.map((a,i)=>`<i class="${i?'':'on'}"></i>`).join('')}</div>`;ad.classList.add('show');
  const go=n=>{k=(n+ADS.length)%ADS.length;ad.querySelectorAll('.sl').forEach((e,i)=>e.classList.toggle('on',i==k));ad.querySelectorAll('.dots i').forEach((e,i)=>e.classList.toggle('on',i==k))};let h=setInterval(()=>go(k+1),6000);
  let sx;ad.ontouchstart=e=>sx=e.touches[0].clientX;ad.ontouchend=e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40){go(k+(d<0?1:-1));clearInterval(h);h=setInterval(()=>go(k+1),6000)}};
- ad.querySelector('.cx').onclick=e=>{e.stopPropagation();ad.remove();clearInterval(h);DB.set('adClosed',today())}})();
+ ad.querySelector('.cx').onclick=e=>{e.stopPropagation();ad.remove();clearInterval(h);DB.set('adClosed',today());setTimeout(topH,50)}})();
+(function(){const ad=document.getElementById('pcad');let k=0;ad.innerHTML='<span class="lab">광고</span>'+ADS.map((a,i)=>`<div class="sl ${i?'':'on'}" style="background:${a[1]}" onclick="toast('광고 예시예요 (가상 브랜드)')"><span class="em">${a[0]}</span><div><b>${a[2]}</b><small>${a[3]}</small></div></div>`).join('')+`<div class="dots">${ADS.map((a,i)=>`<i class="${i?'':'on'}"></i>`).join('')}</div>`;
+ setInterval(()=>{k=(k+1)%ADS.length;ad.querySelectorAll('.sl').forEach((e,i)=>e.classList.toggle('on',i==k));ad.querySelectorAll('.dots i').forEach((e,i)=>e.classList.toggle('on',i==k))},6000)})();setTimeout(topH,100);
 const st=new URLSearchParams(location.search).get('state');if(st=='sheet')setBs('open');if(st=='detail')(function w(){window.__mapReady?detail(0):setTimeout(w,200)})();
 </script>
 <script>function sdkFail(){const e=document.getElementById('err');e.style.display='block';e.innerHTML='⚠️ 카카오지도 SDK 로드 실패: 카카오 디벨로퍼스 &gt; 앱 &gt; <b>카카오맵 사용 설정 ON</b>, 플랫폼 &gt; Web 사이트 도메인에 <b>'+location.origin+'</b> 등록이 필요해요.'}</script>
