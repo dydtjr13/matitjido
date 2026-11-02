@@ -43,13 +43,25 @@ const P=[...raw.map(r=>({n:r[0],c:r[1],img:IMG[r[2]],menu:MENU[r[2]],k0:r[3],m:r
 const DB={get(k,d){try{return JSON.parse(localStorage.getItem('masitdo_'+k))??d}catch(e){return d}},set(k,v){localStorage.setItem('masitdo_'+k,JSON.stringify(v))}};
 const likes=()=>DB.get('likes',[]);
 // 기능 스위치 (되돌리기용)
-const FEATURE={favorites:true};const CLUSTER_STYLE='egg';// 'egg' | 'photo'
+const FEATURE={favorites:true};const VISIT_ICON='stamp';// 'stamp'(체크 도장, 시안 B) | 'pin'(예전 📍)
+const CLUSTER_STYLE='egg';// 'egg' | 'photo'
 const favs=()=>DB.get('favs',[]);
 // 겹침 = 등록한 사람 수. 이미 있는 가게를 내가 또 등록하면 +1 (찜은 점수에 영향 없음)
 const myRegs=()=>DB.get('myregs',[]);const kOf=p=>p.k0+(myRegs().includes(p.id)?1:0);
 // 프로필 사진
-const AV=()=>DB.get('avatar',null)||'img/p0_gukbap.jpg';
-function avatarPick(file,cb){const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const s=Math.min(im.width,im.height),c=document.createElement('canvas');c.width=c.height=256;c.getContext('2d').drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,256,256);const u=c.toDataURL('image/jpeg',.82);DB.set('avatar',u);cb&&cb(u)};im.src=r.result};r.readAsDataURL(file)}
+// ===== 사진 저장소: IndexedDB (용량 큼). 'idb:키' 로 참조, 메모리 캐시로 바로 그림 =====
+const IDBC={};let _idb;function idb(){return _idb||(_idb=new Promise((ok,no)=>{const r=indexedDB.open('masitdo',1);r.onupgradeneeded=()=>r.result.createObjectStore('ph');r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)}))}
+async function idbPut(blob){const k='p'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);const db=await idb();await new Promise((ok,no)=>{const t=db.transaction('ph','readwrite');t.objectStore('ph').put(blob,k);t.oncomplete=ok;t.onerror=()=>no(t.error)});IDBC[k]=URL.createObjectURL(blob);return 'idb:'+k}
+async function idbLoad(){try{const db=await idb();await new Promise(ok=>{const t=db.transaction('ph'),s=t.objectStore('ph'),r=s.openCursor();r.onsuccess=()=>{const c=r.result;if(c){IDBC[c.key]=URL.createObjectURL(c.value);c.continue()}else ok()};r.onerror=ok})}catch(e){}window.__idb=true;dispatchEvent(new Event('idbready'))}
+idbLoad();
+const idbU=x=>x&&x.startsWith('idb:')?(IDBC[x.slice(4)]||'img/p6_latte.jpg'):x;
+// 이미지 줄이기: 긴 변 max px, webp(지원 시) 또는 jpeg 품질 q
+function shrink(file,max,q,square){return new Promise(ok=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{let sx=0,sy=0,sw=im.width,sh=im.height;if(square){const s=Math.min(sw,sh);sx=(sw-s)/2;sy=(sh-s)/2;sw=sh=s}
+ const k=Math.min(1,max/Math.max(sw,sh)),c=document.createElement('canvas');c.width=Math.round(sw*k);c.height=Math.round(sh*k);const g=c.getContext('2d');g.imageSmoothingQuality='high';g.drawImage(im,sx,sy,sw,sh,0,0,c.width,c.height);URL.revokeObjectURL(u);
+ c.toBlob(b=>{if(b&&b.type=='image/webp')ok(b);else c.toBlob(ok,'image/jpeg',q)},'image/webp',q)};im.src=u})}
+// 프로필 사진: 512px × 화면 배율(최대 2) → 최대 1024px, IndexedDB 저장
+const AV=()=>idbU(DB.get('avatar',null))||'img/p0_gukbap.jpg';
+async function avatarPick(file,cb){const px=Math.round(512*Math.min(2,window.devicePixelRatio||1));const b=await shrink(file,px,.9,true);const ref=await idbPut(b);DB.set('avatar',ref);cb&&cb(IDBC[ref.slice(4)])}
 // 핀 색 구간: 1~9 노랑 · 10~29 주황 · 30~99 빨강 · 100+ 빨강+레전드 링 (lv0=새 등록 1명)
 const lvOf=p=>{const k=kOf(p);return k>=100?4:k>=30?3:k>=10?2:k>=2?1:0};
 const top10=()=>[...P].sort((a,b)=>kOf(b)-kOf(a)).slice(0,10).map(p=>p.id);
