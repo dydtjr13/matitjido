@@ -41,11 +41,19 @@ const P=[...raw.map(r=>({n:r[0],c:r[1],img:IMG[r[2]],menu:MENU[r[2]],k0:r[3],m:r
 (function(){try{(JSON.parse(localStorage.getItem('masitdo_myplaces'))||[]).forEach(q=>P.push({...q,id:P.length}))}catch(e){}})();
 // localStorage 저장소 (백엔드 없는 프로토타입)
 const DB={get(k,d){try{return JSON.parse(localStorage.getItem('masitdo_'+k))??d}catch(e){return d}},set(k,v){localStorage.setItem('masitdo_'+k,JSON.stringify(v))}};
-const likes=()=>DB.get('likes',[]);const kOf=p=>p.k0+(likes().includes(p.id)?1:0);
+const likes=()=>DB.get('likes',[]);
+// 기능 스위치 (되돌리기용)
+const FEATURE={favorites:true};const CLUSTER_STYLE='egg';// 'egg' | 'photo'
+const favs=()=>DB.get('favs',[]);
+// 겹침 = 등록한 사람 수. 이미 있는 가게를 내가 또 등록하면 +1 (찜은 점수에 영향 없음)
+const myRegs=()=>DB.get('myregs',[]);const kOf=p=>p.k0+(myRegs().includes(p.id)?1:0);
+// 프로필 사진
+const AV=()=>DB.get('avatar',null)||'img/p0_gukbap.jpg';
+function avatarPick(file,cb){const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const s=Math.min(im.width,im.height),c=document.createElement('canvas');c.width=c.height=256;c.getContext('2d').drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,256,256);const u=c.toDataURL('image/jpeg',.82);DB.set('avatar',u);cb&&cb(u)};im.src=r.result};r.readAsDataURL(file)}
 // 핀 색 구간: 1~9 노랑 · 10~29 주황 · 30~99 빨강 · 100+ 빨강+레전드 링 (lv0=새 등록 1명)
 const lvOf=p=>{const k=kOf(p);return k>=100?4:k>=30?3:k>=10?2:k>=2?1:0};
 const top10=()=>[...P].sort((a,b)=>kOf(b)-kOf(a)).slice(0,10).map(p=>p.id);
 const MISSIONS=[{id:'top10',e:'🔥',t:`이번 주 ${LABEL.overlap} Top 10 중 2곳 방문하기`,goal:2,r:'+300P',calc:()=>DB.get('visits',[]).filter(id=>top10().includes(id)).length},
- {id:'like5',e:'👍',t:'맛집 5곳 추천(공감)하기',goal:5,r:'특별 아이콘',calc:()=>likes().length},
+ {id:'like5',e:'♥',t:'맛집 5곳 찜하기',goal:5,r:'특별 아이콘',calc:()=>favs().length},
  {id:'visit3',e:'📍',t:'방문 인증 3회',goal:3,r:'스티커 1장',calc:()=>DB.get('visits',[]).length}];
 function toast(msg){let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';t.style.cssText='position:fixed;left:50%;top:128px;transform:translateX(-50%);background:rgba(29,31,36,.92);color:#fff;padding:12px 18px;border-radius:999px;font-size:14px;z-index:999;box-shadow:0 6px 20px rgba(0,0,0,.25);pointer-events:none;transition:opacity .3s;max-width:90%;text-align:center';document.body.appendChild(t)}t.textContent=msg;t.style.opacity=1;clearTimeout(t._h);t._h=setTimeout(()=>t.style.opacity=0,2200)}
