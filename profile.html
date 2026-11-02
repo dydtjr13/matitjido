@@ -22,18 +22,25 @@ h3{font-size:16px;margin-bottom:12px}.sec{margin-bottom:16px}
 .btn{background:#FF7A1A;color:#fff;border:0;border-radius:999px;padding:9px 16px;font-weight:800;cursor:pointer;font:inherit;font-weight:800}.btn.l{background:#FFF1E0;color:#C2560A}
 .edit-only{display:none}.editing .edit-only{display:flex}.editing .view-only{display:none}
 .match{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.mu{background:#FFF8EF;border-radius:16px;padding:12px;text-align:center}.mu i{display:block;width:52px;height:52px;margin:0 auto 6px;border-radius:50%;background:center/cover;border:3px solid #FFB800}.mu .p{font-weight:900;color:#FF7A1A;font-size:18px}
-.stk{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.sk{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-size:28px;background:radial-gradient(#fff,#FFE9C7);border:3px dashed #FFB800;position:relative}.sk small{position:absolute;bottom:-18px;font-size:10px;white-space:nowrap;color:#666}.sk.off{filter:grayscale(1);opacity:.35}
+.stk{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.sk{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-size:28px;background:radial-gradient(#fff,#FFE9C7);border:3px dashed #FFB800;position:relative}.sk.off{filter:grayscale(1);opacity:.35}
 .mi{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #f3ede4}.mi .f{flex:1}.mi .bar{margin-top:6px;height:7px}
 .pl{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.pc{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 18px rgba(255,122,26,.08)}.pc .ph{height:110px;background:center/cover;position:relative}.pc .ph span{position:absolute;top:8px;left:8px;font-size:11px;font-weight:800;padding:3px 8px;border-radius:999px;background:#1d1f24;color:#fff}.pc .ph em{position:absolute;right:8px;bottom:8px;font-style:normal;font-size:12px;font-weight:900;padding:4px 9px;border-radius:999px;background:#FFB800}
 .pc .in{padding:10px 12px}
-.wrap>*{min-width:0}.taste{scroll-margin-top:70px}@media(max-width:820px){.taste>div[style*="grid-template-columns"]{grid-template-columns:1fr!important}.match .mu{padding:10px 6px}.mu i{width:44px;height:44px}.wrap{grid-template-columns:1fr;padding:12px;gap:12px}.stats{grid-template-columns:repeat(2,1fr)}.pl{grid-template-columns:1fr 1fr}.stk{grid-template-columns:repeat(4,1fr);row-gap:24px}.match{grid-template-columns:1fr 1fr 1fr}header{padding:8px 12px}header img{height:34px}.hide-m{display:none}}
+.wrap>*{min-width:0}.taste{scroll-margin-top:70px}@media(max-width:820px){.taste>div[style*="grid-template-columns"]{grid-template-columns:1fr!important}.match .mu{padding:10px 6px}.mu i{width:44px;height:44px}.wrap{grid-template-columns:1fr;padding:12px;gap:12px}.stats{grid-template-columns:repeat(2,1fr)}.pl{grid-template-columns:1fr 1fr}.stk{grid-template-columns:repeat(4,1fr);row-gap:14px}.match{grid-template-columns:1fr 1fr 1fr}header{padding:8px 12px}header img{height:34px}.hide-m{display:none}}
+.pane{display:none}.pane.show{display:block}.stats.pane.show{display:grid}
+.setrow{display:flex;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid #f3ede4}.setrow>div:first-child{flex:1}.inp{font:inherit;padding:9px 12px;border:1.5px solid #eee3d3;border-radius:10px;width:150px}
+.sw{position:relative;width:48px;height:28px;flex:none}.sw input{display:none}.sw i{position:absolute;inset:0;border-radius:14px;background:#ddd;transition:.2s}.sw i:after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.2s}.sw input:checked+i{background:#FF7A1A}.sw input:checked+i:after{left:23px}
+.skw{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}.skw small{font-size:11px;color:#555;text-align:center;line-height:1.25;word-break:keep-all}.skw.off small{color:#aaa}
+.sec>.row2{flex-wrap:wrap;gap:8px}.mi .bar{background:#f1ece4}.done{color:#1f9d55;font-weight:800}
+.skw .sk{width:100%;max-width:76px;aspect-ratio:1;font-size:30px;line-height:1;border-width:2.5px}
+@media(max-width:820px){.skw .sk{max-width:62px;font-size:24px}.setrow:first-of-type{flex-wrap:wrap}.setrow .inp{flex:1;width:auto}}
 </style></head><body>
 <header><a href="index.html"><img src="logo_header.svg" alt="맛있을지도?"></a><div class="sp"></div><a class="btn l" href="index.html">🗺️ <span class="hide-m">지도로</span></a></header>
 <div class="wrap">
 <aside>
  <div class="card">
   <div class="av"><div></div><span>🏅 황금 테두리</span></div>
-  <div class="nick">국밥탐정</div><div class="sub" style="text-align:center">창원 성산구 · 가입 142일째</div>
+  <div class="nick" id="nick">국밥탐정</div><div class="sub" style="text-align:center">창원 성산구 · 가입 142일째</div>
   <div class="ttl"><span class="t g">👑 명예 동네 주민 · 상남동</span><span class="t">🍜 동네 미식가</span><span class="t">🧾 내돈내산러</span></div>
   <div class="xp"><div class="row2"><b>Lv.7 <span class="O">동네 미식가</span></b><span class="sub">680 / 1,000 XP</span></div><div class="bar" style="margin-top:6px"><b style="width:68%"></b></div><div class="sub" style="margin-top:4px">Lv.8 '골목 미식 탐험가'까지 320 XP</div></div>
   <div class="kv"><div><span class="sub">포인트</span><b class="O">1,240P</b></div><div><span class="sub">이번 주 순위</span><b>성산구 2위</b></div></div>
@@ -41,31 +48,58 @@ h3{font-size:16px;margin-bottom:12px}.sec{margin-bottom:16px}
  </div>
 </aside>
 <main>
- <div class="tabs"><span class="tab on">개요</span><span class="tab">입맛 프로필</span><span class="tab">내 맛집</span><span class="tab">배지·스티커</span><span class="tab">미션</span><span class="tab">설정</span></div>
- <div class="stats sec"><div class="st"><span class="sub">📍 등록한 맛집</span><b>41</b></div><div class="st"><span class="sub">❤️ 받은 공감</span><b>1,286</b></div><div class="st"><span class="sub">🏆 랭크 진입 맛집</span><b class="O">9</b></div><div class="st"><span class="sub">🧾 내돈내산 인증</span><b>23</b></div></div>
- <div class="card sec taste" id="taste"><div class="row2" style="margin-bottom:12px"><h3 style="margin:0">😋 입맛 프로필 <span class="sub">(선택 사항)</span></h3><button class="btn view-only" onclick="ed(1)">✏️ 편집</button><div class="edit-only" style="gap:6px"><button class="btn l" onclick="ed(0)">취소</button><button class="btn" onclick="ed(0)">저장</button></div></div>
+ <div class="tabs"><span class="tab on" data-tab="ov">개요</span><span class="tab" data-tab="taste">입맛 프로필</span><span class="tab" data-tab="places">내 맛집</span><span class="tab" data-tab="badge">배지·스티커</span><span class="tab" data-tab="mission">미션</span><span class="tab" data-tab="set">설정</span></div>
+ <div class="stats sec pane" data-p="ov"><div class="st"><span class="sub">📍 등록한 맛집</span><b>41</b></div><div class="st"><span class="sub">❤️ 받은 공감</span><b>1,286</b></div><div class="st"><span class="sub">🏆 랭크 진입 맛집</span><b class="O">9</b></div><div class="st"><span class="sub">🧾 내돈내산 인증</span><b>23</b></div></div>
+ <div class="card sec taste pane" data-p="ov taste" id="taste"><div class="row2" style="margin-bottom:12px"><h3 style="margin:0">😋 입맛 프로필 <span class="sub">(선택 사항)</span></h3><button class="btn view-only" onclick="ed(1)">✏️ 편집</button><div class="edit-only" style="gap:6px"><button class="btn l" onclick="ed(0)">취소</button><button class="btn" onclick="ed(0)">저장</button></div></div>
   <div class="it"><div class="row2"><b>🌶️ 매운맛</b><span class="O" id="spv">맵게</span></div><input type="range" class="sl" min="0" max="4" value="3" id="sp" disabled><div class="lbl"><span>순한맛</span><span>약간</span><span>보통</span><span>맵게</span><span>아주 매운맛</span></div></div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 20px">
   <div class="it"><div class="row2"><b>🍬 단맛</b><span class="sub">보통</span></div><input type="range" class="sl n" min="0" max="4" value="2" disabled></div><div class="it"><div class="row2"><b>🧂 짠맛</b><span class="sub">좋아함</span></div><input type="range" class="sl n" min="0" max="4" value="3" disabled></div><div class="it"><div class="row2"><b>🍋 신맛</b><span class="sub">조금</span></div><input type="range" class="sl n" min="0" max="4" value="1" disabled></div><div class="it"><div class="row2"><b>🥬 담백함</b><span class="sub">아주 좋아함</span></div><input type="range" class="sl n" min="0" max="4" value="4" disabled></div></div>
   <div class="it"><b>세부 취향</b><div class="opts" style="margin-top:8px" id="det"><span class="op ">🧈 느끼한 맛 OK</span><span class="op on">🐟 비린맛 민감</span><span class="op on">🌿 향신료(고수) 좋아함</span><span class="op on">🍖 기름진 고기</span><span class="op on">🍜 국물파</span><span class="op on">🥢 면 요리</span><span class="op ">🦪 해산물</span><span class="op on">🧄 마늘 듬뿍</span><span class="op ">🍰 디저트</span></div></div>
   <div class="sub">입맛 프로필을 채우면 나와 비슷한 사람들의 추천 맛집이 지도에서 먼저 보여요.</div>
  </div>
- <div class="card sec"><h3>🤝 나와 입맛 비슷한 유저</h3><div class="match">
+ <div class="card sec pane" data-p="ov taste"><h3>🤝 나와 입맛 비슷한 유저</h3><div class="match">
   <div class="mu"><i style="background-image:url(img/p2_jjamppong.jpg)"></i><b>면치기장인</b><div class="p">92%</div><div class="sub">매운맛·짠맛 일치</div></div>
   <div class="mu"><i style="background-image:url(img/p4_baekban.jpg)"></i><b>혼밥여왕</b><div class="p">87%</div><div class="sub">담백함·혼밥</div></div>
   <div class="mu"><i style="background-image:url(img/p1_udon.jpg)"></i><b>우동한그릇</b><div class="p">81%</div><div class="sub">국물파</div></div></div></div>
- <div class="card sec"><h3>🏅 방문 인증 스티커·배지 <span class="sub">8 / 12</span></h3><div class="stk" style="padding-bottom:18px">
-  <div class="sk ">🍲<small>국밥 마스터</small></div><div class="sk ">🍜<small>면치기 10회</small></div><div class="sk ">🌶️<small>매운맛 도전</small></div><div class="sk ">🧾<small>내돈내산 20</small></div><div class="sk ">🏠<small>명예 주민</small></div><div class="sk ">🌙<small>야식 탐험</small></div><div class="sk ">☕<small>카페 투어</small></div><div class="sk ">🥇<small>겹침 Top10</small></div><div class="sk off">🍣<small>일식 정복</small></div><div class="sk off">🍝<small>파스타 5곳</small></div><div class="sk off">🎂<small>디저트 헌터</small></div><div class="sk off">🗺️<small>5개 구 정복</small></div></div></div>
- <div class="card sec"><h3>🎯 진행 중인 미션</h3>
-  <div class="mi"><span style="font-size:24px">🔥</span><div class="f"><b>이번 주 겹침 Top 10 중 2곳 방문하기</b><div class="bar"><b style="width:50%"></b></div></div><span class="sub">1/2 · +300P</span></div>
-  <div class="mi"><span style="font-size:24px">🧾</span><div class="f"><b>영수증 인증 5회</b><div class="bar"><b style="width:60%"></b></div></div><span class="sub">3/5 · 특별 아이콘</span></div>
-  <div class="mi" style="border:0"><span style="font-size:24px">🏠</span><div class="f"><b>상남동 명예 주민 유지 (1위와 7곳 차이)</b><div class="bar"><b style="width:85%"></b></div></div><span class="sub">41/48</span></div></div>
- <div class="sec"><h3>📍 내가 등록한 맛집</h3><div class="pl"><div class="pc"><div class="ph" style="background-image:url(img/p0_gukbap.jpg)"><span>🧾 영수증</span><em>겹침 24</em></div><div class="in"><b>성산 돼지국밥</b><div class="sub">❤️ 168 · 🏆 성산구 랭크 진입</div></div></div><div class="pc"><div class="ph" style="background-image:url(img/p2_jjamppong.jpg)"><span>🧾 영수증</span><em>겹침 9</em></div><div class="in"><b>가음정 홍짬뽕</b><div class="sub">❤️ 63 · 🏆 성산구 랭크 진입</div></div></div><div class="pc"><div class="ph" style="background-image:url(img/p4_baekban.jpg)"><span>📍 GPS</span><em>겹침 10</em></div><div class="in"><b>성산 한상</b><div class="sub">❤️ 70 · 🏆 성산구 랭크 진입</div></div></div><div class="pc"><div class="ph" style="background-image:url(img/p1_udon.jpg)"><span>📍 GPS</span><em>겹침 4</em></div><div class="in"><b>사파 수제우동</b><div class="sub">❤️ 28 · 등록 4명 겹침</div></div></div><div class="pc"><div class="ph" style="background-image:url(img/p5_tteokbokki.jpg)"><span>📱 일반</span><em>겹침 6</em></div><div class="in"><b>외동 분식왕</b><div class="sub">❤️ 42 · 등록 6명 겹침</div></div></div><div class="pc"><div class="ph" style="background-image:url(img/p6_latte.jpg)"><span>📱 일반</span><em>겹침 8</em></div><div class="in"><b>용지호수 카페</b><div class="sub">❤️ 56 · 등록 8명 겹침</div></div></div></div></div>
+ <div class="card sec pane" data-p="ov badge"><h3>🏅 방문 인증 스티커·배지 <span class="sub">8 / 12</span></h3><div class="stk">
+  <div class="skw "><div class="sk ">🍲</div><small>국밥 마스터</small></div><div class="skw "><div class="sk ">🍜</div><small>면치기 10회</small></div><div class="skw "><div class="sk ">🌶️</div><small>매운맛 도전</small></div><div class="skw "><div class="sk ">🧾</div><small>내돈내산 20</small></div><div class="skw "><div class="sk ">🏠</div><small>명예 주민</small></div><div class="skw "><div class="sk ">🌙</div><small>야식 탐험</small></div><div class="skw "><div class="sk ">☕</div><small>카페 투어</small></div><div class="skw "><div class="sk ">🥇</div><small>겹침 Top10</small></div><div class="skw off"><div class="sk off">🍣</div><small>일식 정복</small></div><div class="skw off"><div class="sk off">🍝</div><small>파스타 5곳</small></div><div class="skw off"><div class="sk off">🎂</div><small>디저트 헌터</small></div><div class="skw off"><div class="sk off">🗺️</div><small>5개 구 정복</small></div></div></div>
+ <div class="card sec pane" data-p="ov mission"><h3>🎯 진행 중인 미션</h3><div id="mis"></div></div>
+ <div class="sec pane" data-p="ov places"><div class="row2" style="margin-bottom:12px"><h3 style="margin:0">📍 내가 등록한 맛집</h3><div class="opts" id="pf"><span class="op on">전체</span><span class="op">🧾 영수증</span><span class="op">📍 GPS</span><span class="op">📱 일반</span></div></div><div class="pl" id="pl"><div class="pc" data-v="🧾 영수증"><div class="ph" style="background-image:url(img/p0_gukbap.jpg)"><span>🧾 영수증</span><em>겹침 24</em></div><div class="in"><b>성산 돼지국밥</b><div class="sub">❤️ 168 · 🏆 성산구 랭크 진입</div></div></div><div class="pc" data-v="🧾 영수증"><div class="ph" style="background-image:url(img/p2_jjamppong.jpg)"><span>🧾 영수증</span><em>겹침 9</em></div><div class="in"><b>가음정 홍짬뽕</b><div class="sub">❤️ 63 · 🏆 성산구 랭크 진입</div></div></div><div class="pc" data-v="📍 GPS"><div class="ph" style="background-image:url(img/p4_baekban.jpg)"><span>📍 GPS</span><em>겹침 10</em></div><div class="in"><b>성산 한상</b><div class="sub">❤️ 70 · 🏆 성산구 랭크 진입</div></div></div><div class="pc" data-v="📍 GPS"><div class="ph" style="background-image:url(img/p1_udon.jpg)"><span>📍 GPS</span><em>겹침 4</em></div><div class="in"><b>사파 수제우동</b><div class="sub">❤️ 28 · 등록 4명 겹침</div></div></div><div class="pc" data-v="📱 일반"><div class="ph" style="background-image:url(img/p5_tteokbokki.jpg)"><span>📱 일반</span><em>겹침 6</em></div><div class="in"><b>외동 분식왕</b><div class="sub">❤️ 42 · 등록 6명 겹침</div></div></div><div class="pc" data-v="📱 일반"><div class="ph" style="background-image:url(img/p6_latte.jpg)"><span>📱 일반</span><em>겹침 8</em></div><div class="in"><b>용지호수 카페</b><div class="sub">❤️ 56 · 등록 8명 겹침</div></div></div></div></div>
+<div class="card sec pane" data-p="set"><h3>⚙️ 설정</h3>
+ <div class="setrow"><div><b>닉네임</b><div class="sub">한 달에 한 번 바꿀 수 있어요</div></div><input id="nickIn" class="inp" maxlength="12"><button class="btn" onclick="saveNick()">저장</button></div>
+ <div class="setrow"><div><b>입맛 프로필 공개</b><div class="sub">켜면 다른 유저와 입맛 매칭돼요</div></div><label class="sw"><input type="checkbox" data-set="tastePublic" checked><i></i></label></div>
+ <div class="setrow"><div><b>내 주변 진짜맛집 알림</b><div class="sub">새로 랭크에 오른 맛집 알림</div></div><label class="sw"><input type="checkbox" data-set="notiNear" checked><i></i></label></div>
+ <div class="setrow"><div><b>미션·리워드 알림</b></div><label class="sw"><input type="checkbox" data-set="notiMission"><i></i></label></div>
+ <div class="setrow"><div><b>휴대폰 본인인증</b><div class="sub">첫 맛집 등록 시 1회 필요</div></div><span class="t g">✅ 인증 완료</span></div>
+ <div class="setrow"><div><b>프로토타입 데이터 초기화</b><div class="sub">추천·방문·신고·입맛 저장값 삭제</div></div><button class="btn l" onclick="resetAll()">초기화</button></div></div>
 </main></div>
+<script src="data.js"></script>
 <script>
 const st=new URLSearchParams(location.search).get('state');
 const spL=['순한맛','약간','보통','맵게','아주 매운맛'];const sp=document.getElementById('sp');sp.oninput=()=>document.getElementById('spv').textContent=spL[sp.value];
 function ed(on){document.getElementById('taste').classList.toggle('editing',!!on);document.querySelectorAll('.taste input').forEach(i=>i.disabled=!on)}
 document.querySelectorAll('.op').forEach(o=>o.onclick=()=>{if(document.getElementById('taste').classList.contains('editing'))o.classList.toggle('on')});
+
+// 탭
+function tab(k){document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.tab==k));document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('show',p.dataset.p.split(' ').includes(k)));DB.set('ptab',k);const a=document.querySelector('.tab.on');a&&a.scrollIntoView({inline:'center',block:'nearest'})}
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>tab(t.dataset.tab));
+// 입맛 저장/불러오기
+const TI=()=>[...document.querySelectorAll('.taste input[type=range]')],TO=()=>[...document.querySelectorAll('#det .op')];
+function loadTaste(){const t=DB.get('taste',null);if(!t)return;TI().forEach((i,j)=>{if(t.r[j]!=null)i.value=t.r[j]});TO().forEach((o,j)=>o.classList.toggle('on',!!t.o[j]));upd()}
+const LV=['거의 안 좋아함','조금','보통','좋아함','아주 좋아함'];function upd(){TI().forEach((i,j)=>{const l=i.closest('.it').querySelector('.row2 span');if(l)l.textContent=j==0?spL[i.value]:LV[i.value]})}
+TI().forEach(i=>i.addEventListener('input',upd));let snap=null;
+const _ed=ed;ed=function(on,save){if(on){snap={r:TI().map(i=>i.value),o:TO().map(o=>o.classList.contains('on'))}}else if(save){DB.set('taste',{r:TI().map(i=>+i.value),o:TO().map(o=>o.classList.contains('on'))});toast('입맛 프로필을 저장했어요')}else if(snap){TI().forEach((i,j)=>i.value=snap.r[j]);TO().forEach((o,j)=>o.classList.toggle('on',snap.o[j]));upd()}_ed(on)};
+document.querySelector('.edit-only .btn:not(.l)').setAttribute('onclick','ed(0,1)');
+// 미션
+function mis(){document.getElementById('mis').innerHTML=MISSIONS.map(m=>{const v=Math.min(m.calc(),m.goal),d=v>=m.goal;return `<div class="mi"><span style="font-size:24px">${m.e}</span><div class="f"><b>${m.t}</b><div class="bar"><b style="width:${v/m.goal*100}%"></b></div></div><span class="sub ${d?'done':''}">${d?'✅ 달성':v+'/'+m.goal} · ${m.r}</span></div>`}).join('')+`<p class="sub" style="margin-top:10px">지도에서 맛집 상세 → 📍 방문 인증 / 👍 나도 추천을 누르면 진행돼요.</p>`}
+// 내 맛집 필터
+document.querySelectorAll('#pf .op').forEach(o=>o.onclick=()=>{document.querySelectorAll('#pf .op').forEach(x=>x.classList.toggle('on',x==o));const f=o.textContent;document.querySelectorAll('#pl .pc').forEach(c=>c.style.display=(f=='전체'||c.dataset.v==f)?'':'none')});
+// 설정
+const SET=DB.get('settings',{});document.querySelectorAll('[data-set]').forEach(c=>{if(SET[c.dataset.set]!=null)c.checked=SET[c.dataset.set];c.onchange=()=>{SET[c.dataset.set]=c.checked;DB.set('settings',SET);toast(c.closest('.setrow').querySelector('b').textContent+(c.checked?' 켜짐':' 꺼짐'))}});
+const nk=DB.get('nick','국밥탐정');document.getElementById('nick').textContent=nk;document.getElementById('nickIn').value=nk;
+function saveNick(){const v=document.getElementById('nickIn').value.trim();if(v.length<2){toast('닉네임은 2자 이상이에요');return}DB.set('nick',v);document.getElementById('nick').textContent=v;toast('닉네임을 바꿨어요')}
+function resetAll(){Object.keys(localStorage).filter(k=>k.startsWith('masitdo_')).forEach(k=>localStorage.removeItem(k));toast('초기화했어요');setTimeout(()=>location.reload(),800)}
+// 통계에 추천 반영
+loadTaste();mis();tab(new URLSearchParams(location.search).get('tab')||(st=='edit'?'taste':'ov'));
 if(st=='edit'){ed(1);document.getElementById('taste').scrollIntoView()}
 </script></body></html>
