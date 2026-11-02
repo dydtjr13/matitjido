@@ -7,3 +7,6 @@ p3_pasta.jpg (파스타 오늘) | 작가: Andy Li | 라이선스: CC0 | https://
 p4_baekban.jpg (혼밥식당 한그릇) | 작가: by LWY | 라이선스: CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Korean.cuisine-baekban-01.jpg
 p5_tteokbokki.jpg (용호 분식) | 작가: by jetalone (flickr) | 라이선스: CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Korean.snacks-Tteokbokki-08.jpg
 p6_latte.jpg (카페 모래) | 작가: Mortefot from Flickr | 라이선스: CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Latte_art.jpg
+
+[광고 배너 사진]
+광고 배너(모바일·PC) 배경 사진은 위 img/ 사진(p3_pasta, p0_gukbap, p5_tteokbokki, p2_jjamppong)을 다시 사용했어요. 출처와 라이선스는 위 항목과 같아요. 광고 브랜드는 모두 가상 예시예요.
